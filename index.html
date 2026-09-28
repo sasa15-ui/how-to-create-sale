@@ -1,0 +1,450 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+
+  <!-- ترميز اللغة العربية -->
+  <meta charset="UTF-8">
+
+  <!-- دعم الموبايل -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- اسم الموقع في التاب -->
+  <title>جهّز متجرك للبيع خطوة بخطوة</title>
+
+  <!-- وصف الموقع -->
+  <meta
+    name="description"
+    content="أداة مجانية تساعد أصحاب المتاجر الإلكترونية على تجهيز متاجرهم."
+  >
+
+  <!-- الخط -->
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- =================================================
+       ربط ملف CSS
+       مهم: ملف style.css يكون في نفس فولدر index.html
+  ================================================== -->
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+  <!-- محتوى الموقع هنا -->
+<!-- =====================================================
+     1. الشريط العلوي NAVBAR
+     لو عايز تغير أسماء روابط القائمة عدل هنا
+===================================================== -->
+
+<header class="nav">
+  <div class="wrap nav-in">
+
+    <!-- اسم الموقع -->
+    <a href="#top" class="brand">جهّز متجرك</a>
+
+    <a class="journey-progress" id="journey-progress" href="#journey" aria-label="تقدم تجهيز المتجر: 0 من 7">
+      <svg viewBox="0 0 40 40" aria-hidden="true">
+        <circle class="journey-progress-track" cx="20" cy="20" r="16"></circle>
+        <circle class="journey-progress-ring" id="journey-progress-ring" cx="20" cy="20" r="16"></circle>
+      </svg>
+      <span id="journey-progress-count">0/7</span>
+    </a>
+
+    <!-- زر الموبايل -->
+    <button
+      class="burger"
+      id="burger"
+      aria-label="فتح القائمة"
+      aria-expanded="false"
+      aria-controls="menu"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <!-- روابط القائمة -->
+    <nav id="menu" class="menu" aria-label="التنقل الرئيسي">
+      <a href="#quiz">اختبار الجاهزية</a>
+      <a href="#journey">خطوات تجهيز المتجر</a>
+      <a href="#templates">قوالب جاهزة</a>
+      <a href="#before-ads">قبل الإعلانات</a>
+    </nav>
+
+  </div>
+</header>
+
+
+<main id="top">
+
+<!-- =====================================================
+     2. الواجهة الرئيسية HERO
+     هنا تعدل العنوان والوصف والأزرار
+===================================================== -->
+
+<section class="hero wrap">
+
+  <span class="hero-badge">أداة مجانية لأصحاب المتاجر الإلكترونية</span>
+
+  <h1>
+    جهّز متجرك للبيع
+    <span>خطوة بخطوة</span>
+  </h1>
+
+  <p class="lead">
+    كل اللي محتاجه عشان تجهز متجرك من أول الإعداد،
+    المنتجات والسياسات، لحد الدفع والشحن والـPixel
+    واختبار أول طلب.
+  </p>
+
+  <div class="actions">
+
+    <a class="btn primary" href="#quiz">
+      اختبر جاهزية متجرك مجانًا
+    </a>
+
+    <a class="btn ghost" href="#journey">
+      شوف خطوات تجهيز المتجر
+    </a>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     3. اختبار جاهزية المتجر
+     الأسئلة نفسها هتكون في script.js
+     لأن ده جزء تفاعلي
+===================================================== -->
+
+
+
+
+<!-- =====================================================
+     4. رحلة تجهيز المتجر
+     
+     مهم:
+     لو عايز تغير اسم أو وصف مرحلة،
+     هتعدلها من هنا بسهولة.
+===================================================== -->
+
+<section id="journey" class="sec wrap">
+
+  <span class="section-label">02 — خطوات التجهيز</span>
+
+  <h2>رحلة تجهيز المتجر</h2>
+
+  <p class="section-desc">
+    امشي على الخطوات بالترتيب لحد ما متجرك يبقى جاهز.
+  </p>
+
+  <div class="journey-overview">
+    <div class="journey-overview-head">
+      <div>
+        <p class="journey-progress-summary" id="journey-progress-summary"></p>
+        <p class="journey-next-step" id="journey-next-step" aria-live="polite"></p>
+      </div>
+      <button class="journey-reset" id="journey-reset" type="button">إعادة التقدم</button>
+    </div>
+    <div
+      class="journey-progress-track"
+      id="journey-progress-bar"
+      role="progressbar"
+      aria-label="التقدم في رحلة تجهيز المتجر"
+      aria-valuemin="0"
+      aria-valuemax="100"
+      aria-valuenow="0"
+    >
+      <span id="journey-progress-fill"></span>
+    </div>
+  </div>
+
+
+  <div class="grid" id="stages">
+
+    <!-- المرحلة 1 -->
+    <article class="stage-card">
+
+      <span class="stage-number">01</span>
+
+      <h3>إعداد وتهيئة المتجر</h3>
+
+      <p>
+        اختيار منصة Order Easy، وضبط إعدادات النطاق
+        والبيانات الأساسية للمتجر.
+      </p>
+
+      <a href="#" class="text-link">
+        ابدأ الخطوة ←
+      </a>
+
+    </article>
+
+
+    <!-- المرحلة 2 -->
+    <article class="stage-card">
+
+      <span class="stage-number">02</span>
+
+      <h3>الأقسام وإضافة المنتجات</h3>
+
+      <p>
+        إنشاء التصنيفات الرئيسية والفرعية، كتابة الوصف
+        البيعي للمنتج، ورفع صور عالية الجودة.
+      </p>
+
+      <a href="#" class="text-link">
+        ابدأ الخطوة ←
+      </a>
+
+    </article>
+
+
+    <!-- المرحلة 3 -->
+    <article class="stage-card">
+
+      <span class="stage-number">03</span>
+
+      <h3>سياسات المتجر</h3>
+
+      <p>
+        إضافة سياسة الاستبدال والاسترجاع، الشروط والأحكام،
+        وسياسة الخصوصية.
+      </p>
+
+      <a href="#" class="text-link">
+        ابدأ الخطوة ←
+      </a>
+
+    </article>
+
+
+    <!-- المرحلة 4 -->
+    <article class="stage-card">
+
+      <span class="stage-number">04</span>
+
+      <h3>
+        الصفحة الرئيسية والدفع والشحن
+      </h3>
+
+      <p>
+        تنسيق الصفحة الرئيسية، إعداد الدفع عند الاستلام،
+        تحديد أسعار الشحن وتبسيط عملية الشراء.
+      </p>
+
+      <a href="#" class="text-link">
+        ابدأ الخطوة ←
+      </a>
+
+    </article>
+
+
+    <!-- المرحلة 5 -->
+    <article class="stage-card">
+
+      <span class="stage-number">05</span>
+
+      <h3>ربط الـPixel وتتبع الحملات</h3>
+
+      <p>
+        ربط Meta Pixel وTikTok Pixel لتتبع التحويلات
+        والمبيعات.
+      </p>
+
+      <a href="#" class="text-link">
+        ابدأ الخطوة ←
+      </a>
+
+    </article>
+
+
+    <!-- المرحلة 6 -->
+    <article class="stage-card">
+
+      <span class="stage-number">06</span>
+
+      <h3>المرحلة النهائية</h3>
+
+      <p>
+        عمل Test Order والتأكد من وصول الإشعارات وسرعة
+        المتجر ومراجعة تجربة المستخدم.
+      </p>
+
+      <a href="#" class="text-link">
+        ابدأ الخطوة ←
+      </a>
+
+    </article>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     5. القوالب الجاهزة
+===================================================== -->
+
+<section id="templates" class="sec wrap">
+
+  <span class="section-label">03 — وفر وقتك</span>
+
+  <h2>قوالب جاهزة</h2>
+
+  <p class="muted">
+    نصوص تجريبية تقدر تعدلها بما يناسب متجرك.
+  </p>
+
+  <div class="grid" id="tpl">
+
+    <!-- JavaScript هيضيف القوالب -->
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+    6. قبل الإعلانات
+===================================================== -->
+
+<section id="before-ads" class="sec wrap">
+
+  <div class="ads">
+
+    <span class="section-label">
+      04 — قبل الإطلاق
+    </span>
+
+    <h2>
+      قبل ما تبدأ إعلانات، راجع دول
+    </h2>
+
+    <ul class="ticks">
+
+      <li>المنتجات موجودة</li>
+
+      <li>الصور والوصف جاهزين</li>
+
+      <li>السياسات موجودة</li>
+
+      <li>الشحن والدفع مضبوطين</li>
+
+      <li>Pixel مربوط</li>
+
+      <li>Test Order تم</li>
+
+      <li>تجربة المستخدم تمت مراجعتها</li>
+
+    </ul>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+    7. CTA النهائي
+===================================================== -->
+
+<section class="sec wrap cta">
+
+  <h2>
+    جاهز تبدأ؟
+  </h2>
+
+  <p>
+    اختبر متجرك مجانًا واعرف إيه اللي ناقصك.
+  </p>
+
+  <a class="btn primary" href="#quiz">
+    اختبر جاهزية متجرك
+  </a>
+
+</section>
+<section id="quiz" class="sec wrap" aria-labelledby="quiz-h">
+
+  <div class="quiz-card">
+
+    <span class="section-label">01 — اختبار مجاني</span>
+
+    <h2 id="quiz-h">
+      اختبر جاهزية متجرك في 60 ثانية
+    </h2>
+
+    <p class="muted">
+      جاوب على كام سؤال بسيط واعرف إيه اللي ناقص متجرك
+      قبل ما تبدأ.
+    </p>
+
+    <!-- هنا JavaScript هيعرض الأسئلة -->
+    <div id="quiz-body" aria-live="polite"></div>
+
+  </div>
+
+</section>
+
+
+</main>
+
+
+<!-- =====================================================
+     9. FOOTER
+===================================================== -->
+
+<footer class="foot">
+
+  <div class="wrap">
+
+    <strong>جهّز متجرك</strong>
+
+    <p>
+      أداة مجانية لمساعدتك في تجهيز متجرك الإلكتروني.
+    </p>
+
+  </div>
+
+</footer>
+
+
+<!-- رسالة النسخ -->
+<div
+  class="toast"
+  id="toast"
+  role="status"
+  aria-live="polite"
+></div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+</body>
+
+</html>

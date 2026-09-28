@@ -1,0 +1,1063 @@
+/* =========================================================
+   1. إعدادات الموقع الأساسية
+   =========================================================
+   👇 لو عايز تغير ألوان الموقع، عدّل القيم دي فقط.
+*/
+
+:root {
+  --bg: #fbfcfb;          /* لون خلفية الموقع */
+  --card: #ffffff;        /* لون الكروت */
+  --ink: #14231f;         /* لون النص الأساسي */
+  --muted: #5b6b66;       /* لون النص الثانوي */
+  --line: #e3ebe7;        /* لون الحدود */
+
+  --brand: #0f766e;       /* اللون الأساسي للموقع */
+  --brand-dark: #0b5a54;  /* لون الزر عند Hover */
+
+  --soft: #e8f5f2;        /* الخلفيات الخفيفة */
+  --warning: #b45309;     /* لون التنبيهات */
+
+  --radius: 18px;         /* درجة تدوير الكروت */
+}
+
+
+/* =========================================================
+   2. الأساسيات
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 76px;
+}
+
+body {
+  font-family: "IBM Plex Sans Arabic", Tahoma, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.8;
+  font-size: 17px;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input {
+  font-family: inherit;
+}
+
+.wrap {
+  width: min(1080px, calc(100% - 32px));
+  margin-inline: auto;
+}
+
+
+/* =========================================================
+   3. إمكانية الوصول
+   ========================================================= */
+
+.skip {
+  position: absolute;
+  top: -60px;
+  inset-inline-start: 8px;
+
+  background: #fff;
+  padding: 8px 12px;
+
+  z-index: 100;
+}
+
+.skip:focus {
+  top: 8px;
+}
+
+:focus-visible {
+  outline: 3px solid #f59e0b;
+  outline-offset: 2px;
+}
+
+
+/* =========================================================
+   4. العناوين والنصوص
+   ========================================================= */
+
+h1 {
+  font-size: clamp(2rem, 6vw, 3.4rem);
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: clamp(1.4rem, 4vw, 2rem);
+  line-height: 1.4;
+  margin-bottom: 8px;
+}
+
+h3 {
+  line-height: 1.5;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+
+/* =========================================================
+   5. شريط التنقل Navbar
+   ========================================================= */
+
+.nav {
+  position: sticky;
+  top: 0;
+
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+
+  border-bottom: 1px solid var(--line);
+
+  z-index: 50;
+}
+
+.nav-in {
+  min-height: 64px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+/* اسم الموقع */
+
+.brand {
+  font-weight: 700;
+  color: var(--brand);
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+.journey-progress {
+  position: relative;
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 44px;
+  height: 44px;
+  color: var(--brand);
+  text-decoration: none;
+}
+
+.journey-progress svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.journey-progress circle {
+  fill: none;
+  stroke-width: 3;
+}
+
+.journey-progress-track {
+  stroke: var(--soft);
+}
+
+.journey-progress-ring {
+  stroke: var(--brand);
+  stroke-dasharray: 100.53;
+  stroke-dashoffset: 100.53;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.45s ease;
+}
+
+.journey-progress span {
+  font-size: 0.7rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.journey-progress:hover {
+  color: var(--brand-dark);
+}
+
+
+/* القائمة */
+
+.menu {
+  display: none;
+
+  position: absolute;
+  top: 64px;
+  inset-inline: 0;
+
+  background: #fff;
+
+  border-bottom: 1px solid var(--line);
+
+  padding: 8px 16px 16px;
+
+  flex-direction: column;
+}
+
+.menu.open {
+  display: flex;
+}
+
+.menu a {
+  padding: 12px 4px;
+
+  color: var(--ink);
+  text-decoration: none;
+
+  border-bottom: 1px solid var(--line);
+}
+
+.menu a:hover {
+  color: var(--brand);
+}
+
+
+/* زر القائمة في الموبايل */
+
+.burger {
+  background: none;
+  border: 0;
+
+  width: 44px;
+  height: 44px;
+
+  display: grid;
+  place-content: center;
+  gap: 5px;
+
+  cursor: pointer;
+}
+
+.burger span {
+  width: 24px;
+  height: 2px;
+
+  background: var(--ink);
+
+  display: block;
+}
+
+
+/* =========================================================
+   6. Hero Section
+   ========================================================= */
+
+.hero {
+  padding: 70px 0 45px;
+}
+
+.hero > * {
+  animation: hero-enter 0.65s both;
+}
+
+.hero > :nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.hero > :nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.hero > :nth-child(4) {
+  animation-delay: 0.3s;
+}
+
+@keyframes hero-enter {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal-target {
+  opacity: 0;
+  translate: 0 14px;
+  transition:
+    opacity 0.6s ease,
+    translate 0.6s ease;
+}
+
+.reveal-target.is-visible {
+  opacity: 1;
+  translate: 0 0;
+}
+
+.grid > :nth-child(2) {
+  transition-delay: 0.08s;
+}
+
+.grid > :nth-child(3) {
+  transition-delay: 0.16s;
+}
+
+.grid > :nth-child(4) {
+  transition-delay: 0.24s;
+}
+
+
+/* جملة صغيرة فوق العنوان */
+
+.hero-badge {
+  display: inline-block;
+
+  background: var(--soft);
+  color: var(--brand);
+
+  padding: 6px 12px;
+
+  border-radius: 999px;
+
+  font-size: 0.9rem;
+  font-weight: 600;
+
+  margin-bottom: 14px;
+}
+
+
+/* النص الموجود تحت العنوان */
+
+.lead {
+  max-width: 38em;
+
+  color: var(--muted);
+
+  font-size: 1.15rem;
+
+  margin: 16px 0 28px;
+}
+
+
+/* الأزرار */
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+
+/* =========================================================
+   7. الأزرار
+   ========================================================= */
+
+.btn {
+  display: inline-flex;
+
+  justify-content: center;
+  align-items: center;
+
+  min-height: 52px;
+
+  padding: 0 26px;
+
+  border-radius: 14px;
+
+  font: inherit;
+  font-weight: 600;
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  border: 2px solid transparent;
+
+  transition:
+    transform 0.15s,
+    background 0.15s,
+    border-color 0.15s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+
+/* الزر الأساسي */
+
+.primary {
+  background: var(--brand);
+  color: #fff;
+}
+
+.primary:hover {
+  background: var(--brand-dark);
+}
+
+
+/* الزر الثانوي */
+
+.ghost {
+  background: #fff;
+  color: var(--brand);
+
+  border-color: var(--brand);
+}
+
+.ghost:hover {
+  background: var(--soft);
+}
+
+
+/* زر صغير */
+
+.small {
+  min-height: 44px;
+  margin-top: 16px;
+}
+
+
+/* =========================================================
+   8. الأقسام
+   ========================================================= */
+
+.sec {
+  padding: 50px 0;
+}
+
+
+/* عنوان صغير فوق الأقسام */
+
+.section-label {
+  display: inline-block;
+
+  color: var(--brand);
+
+  font-size: 0.9rem;
+  font-weight: 700;
+
+  margin-bottom: 6px;
+}
+
+
+/* وصف القسم */
+
+.section-desc {
+  color: var(--muted);
+
+  margin-top: 4px;
+}
+
+
+/* =========================================================
+   9. Quiz
+   ========================================================= */
+
+.quiz-card {
+  background: var(--card);
+
+  border: 2px solid var(--brand);
+
+  border-radius: 24px;
+
+  padding: 24px;
+
+  box-shadow:
+    0 12px 40px rgba(15, 118, 110, 0.12);
+}
+
+
+/* محتوى الأسئلة */
+
+#quiz-body {
+  margin-top: 20px;
+}
+
+
+/* معلومات السؤال */
+
+.q-meta {
+  display: flex;
+  justify-content: space-between;
+
+  color: var(--muted);
+
+  font-size: 0.95rem;
+
+  margin-bottom: 8px;
+}
+
+
+/* السؤال نفسه */
+
+.q-text {
+  font-size: 1.3rem;
+  font-weight: 600;
+
+  margin: 16px 0 20px;
+}
+
+
+/* أزرار نعم ولا */
+
+.answers {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 12px;
+}
+
+.answers .btn {
+  min-height: 60px;
+
+  font-size: 1.15rem;
+}
+
+
+/* زر لا */
+
+.no {
+  background: #fff;
+  color: var(--ink);
+
+  border-color: var(--line);
+}
+
+
+/* النتيجة */
+
+.score {
+  font-size: 2rem;
+  font-weight: 700;
+
+  color: var(--brand);
+}
+
+
+/* الخطوات الناقصة */
+
+.missing {
+  list-style: none;
+
+  padding: 0;
+
+  margin: 12px 0 20px;
+
+  display: grid;
+  gap: 8px;
+}
+
+.missing li {
+  background: #fff7ed;
+
+  border: 1px solid #fed7aa;
+
+  color: var(--warning);
+
+  padding: 10px 14px;
+
+  border-radius: 12px;
+}
+
+
+/* =========================================================
+   10. كروت المراحل والقوالب
+   ========================================================= */
+
+.grid {
+  display: grid;
+
+  gap: 16px;
+
+  margin-top: 20px;
+}
+
+
+/* الكارت */
+
+.card {
+  background: var(--card);
+
+  border: 1px solid var(--line);
+
+  border-radius: var(--radius);
+
+  padding: 22px;
+
+  box-shadow:
+    0 4px 16px rgba(20, 35, 31, 0.05);
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 10px;
+
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 10px 26px rgba(20, 35, 31, 0.09);
+}
+
+
+/* رقم المرحلة */
+
+.num {
+  width: 44px;
+  height: 44px;
+
+  border-radius: 50%;
+
+  background: var(--soft);
+
+  color: var(--brand);
+
+  display: grid;
+  place-content: center;
+
+  font-weight: 700;
+}
+
+
+/* عنوان الكارت */
+
+.card h3 {
+  font-size: 1.15rem;
+}
+
+
+/* وصف الكارت */
+
+.card p {
+  color: var(--muted);
+
+  flex: 1;
+}
+
+
+/* زر داخل الكارت */
+
+.card .btn {
+  min-height: 46px;
+
+  align-self: flex-start;
+}
+
+#stages .card {
+  min-height: 265px;
+}
+
+#stages .card .btn {
+  width: 100%;
+  align-self: stretch;
+  margin-top: auto;
+}
+
+.stage-link,
+.video-link {
+  align-self: flex-start;
+  color: var(--brand);
+  font-weight: 600;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+.stage-link:hover,
+.video-link:hover {
+  color: var(--brand-dark);
+}
+
+.journey-overview {
+  margin-top: 24px;
+  padding: 18px 20px;
+  background: var(--soft);
+  border-inline-start: 4px solid var(--brand);
+}
+
+.journey-overview-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.journey-progress-summary {
+  font-weight: 700;
+}
+
+.journey-next-step {
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.journey-reset {
+  flex: none;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.88rem;
+  cursor: pointer;
+}
+
+.journey-reset:hover:not(:disabled) {
+  border-color: var(--brand);
+  color: var(--brand);
+}
+
+.journey-reset:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.journey-progress-track {
+  height: 10px;
+  overflow: hidden;
+  background: var(--card);
+}
+
+.journey-progress-track span {
+  display: block;
+  width: 0;
+  height: 100%;
+  background: var(--brand);
+  transition: width 0.4s ease;
+}
+
+.stage-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.stage-status {
+  padding: 4px 9px;
+  background: var(--soft);
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+#stages .stage-card {
+  min-height: 300px;
+  border-top: 3px solid var(--line);
+}
+
+#stages .stage-card.is-next {
+  border-top-color: var(--brand);
+}
+
+#stages .stage-card.is-next .stage-status {
+  background: var(--brand);
+  color: #fff;
+}
+
+#stages .stage-card.is-complete {
+  border-top-color: #3f8f68;
+}
+
+#stages .stage-card.is-complete .stage-status {
+  background: #e8f3ec;
+  color: #246342;
+}
+
+.stage-resources {
+  display: grid;
+  gap: 6px;
+}
+
+.stage-resources:empty {
+  display: none;
+}
+
+#stages .stage-complete {
+  min-height: 48px;
+  align-self: stretch;
+  margin-top: auto;
+  padding-inline: 12px;
+  white-space: normal;
+}
+
+@media (max-width: 420px) {
+  .journey-overview {
+    padding: 14px;
+  }
+
+  .journey-overview-head {
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .journey-reset {
+    padding: 6px 8px;
+  }
+}
+
+
+/* شريط التقدم داخل الاختبار */
+
+.bar {
+  height: 14px;
+
+  background: var(--soft);
+
+  border-radius: 99px;
+
+  overflow: hidden;
+}
+
+
+.bar i {
+  display: block;
+
+  height: 100%;
+
+  width: 0;
+
+  background: var(--brand);
+
+  border-radius: 99px;
+
+  transition: width 0.4s;
+}
+
+
+/* =========================================================
+   12. قسم "قبل الإعلانات"
+   ========================================================= */
+
+.ads {
+  background: var(--soft);
+
+  border-radius: 24px;
+
+  padding: 28px;
+}
+
+
+/* القائمة */
+
+.ticks {
+  list-style: none;
+
+  padding: 0;
+
+  margin: 16px 0;
+
+  display: grid;
+
+  gap: 8px;
+}
+
+
+/* علامة الصح */
+
+.ticks li::before {
+  content: "✓";
+
+  color: var(--brand);
+
+  font-weight: 700;
+
+  margin-inline-end: 10px;
+}
+
+
+/* النص الأخير */
+
+.closing {
+  font-weight: 700;
+
+  font-size: 1.15rem;
+}
+
+
+/* =========================================================
+   13. CTA النهائي
+   ========================================================= */
+
+.cta {
+  text-align: center;
+
+  padding: 60px 0;
+}
+
+.cta .btn {
+  margin-top: 12px;
+}
+
+
+/* =========================================================
+   14. Footer
+   ========================================================= */
+
+.foot {
+  border-top: 1px solid var(--line);
+
+  padding: 24px 0;
+
+  text-align: center;
+
+  color: var(--muted);
+
+  font-size: 0.95rem;
+}
+
+
+/* =========================================================
+   15. رسالة النسخ Toast
+   ========================================================= */
+
+.toast {
+  position: fixed;
+
+  bottom: 24px;
+  left: 50%;
+
+  transform:
+    translate(-50%, 120px);
+
+  background: var(--ink);
+
+  color: #fff;
+
+  padding: 12px 22px;
+
+  border-radius: 12px;
+
+  transition: transform 0.3s;
+
+  z-index: 99;
+}
+
+.toast.show {
+  transform:
+    translate(-50%, 0);
+}
+
+
+/* =========================================================
+   16. Responsive — التابلت
+   ========================================================= */
+
+@media (min-width: 720px) {
+
+  .actions {
+    flex-direction: row;
+  }
+
+  .grid {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+  .quiz-card {
+    padding: 40px;
+  }
+
+}
+
+
+/* =========================================================
+   17. Responsive — الكمبيوتر
+   ========================================================= */
+
+@media (min-width: 960px) {
+
+  /* إخفاء زر الموبايل */
+
+  .burger {
+    display: none;
+  }
+
+
+  /* إظهار القائمة */
+
+  .menu {
+    display: flex !important;
+
+    position: static;
+
+    flex-direction: row;
+
+    padding: 0;
+
+    border: 0;
+
+    gap: 22px;
+
+    background: none;
+  }
+
+  .menu a {
+    border: 0;
+
+    padding: 0;
+  }
+
+
+  /* 3 كروت في الصف */
+
+  .grid {
+    grid-template-columns:
+      repeat(3, 1fr);
+  }
+
+
+  /* القوالب كارتين */
+
+  #tpl {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+}
+
+
+/* =========================================================
+   18. تقليل الحركة لمن يفضل ذلك
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  * {
+    transition: none !important;
+    animation: none !important;
+
+    scroll-behavior: auto !important;
+  }
+
+  .reveal-target {
+    opacity: 1;
+    translate: none;
+  }
+
+}
+
+
+/* =========================================================
+   19. تنسيق النصوص الطويلة
+   ========================================================= */
+
+.pre {
+  white-space: pre-line;
+}
